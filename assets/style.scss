@@ -1,0 +1,39 @@
+:root {
+    --color-blue: #567BF3;
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    background-color: #ECF0F9;
+    box-sizing: border-box;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #567BF3
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 3px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.disabled {
+    pointer-events: none;
+    user-select: none;
+    opacity: .3;
+}
