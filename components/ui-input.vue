@@ -63,20 +63,23 @@ function validateEmail(email) {
   return "";
 }
 
-function validatePassword (pass) {
+function validatePassword(pass) {
   if (pass?.length < 6) {
-    return "Пароль должен быть не менее 6 символов"
+    return "Пароль должен быть не менее 6 символов";
   }
 
-  return ''
+  return "";
 }
 
-function validateVerify (pass) {
-if (pass?.length < 5) {
-    return "Код должен состоять из 5 букв"
+function validateVerify(pass) {
+  if (!/^[a-zA-ZА-Яа-яЁё]+$/.test(pass)) {
+    return "Код может содержать только буквы";
+  }
+  if (pass?.length < 5) {
+    return "Код должен состоять из 5 букв";
   }
 
-  return ''
+  return "";
 }
 
 export default {
@@ -102,8 +105,8 @@ export default {
     },
     verify: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -118,7 +121,7 @@ export default {
         password: validatePassword,
         verifyPassword: validatePassword,
         verifyAuthor: validateVerify,
-        verifyAddresse: validateVerify
+        verifyAddresse: validateVerify,
       },
     };
   },
@@ -180,7 +183,7 @@ export default {
     resize: none;
     font-family: Montserrat, sans-serif;
     outline: none;
-    
+
     &.valid {
       background-color: #fafafa;
     }

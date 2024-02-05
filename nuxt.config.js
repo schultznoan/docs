@@ -3,8 +3,7 @@ import env from './env.config'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - docs',
-    title: 'docs',
+    title: 'Inforsphere',
     htmlAttrs: {
       lang: 'en'
     },
@@ -15,7 +14,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/library.png' }
     ]
   },
 

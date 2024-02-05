@@ -146,7 +146,6 @@ export default {
     font-weight: 700;
     font-size: 18px;
     line-height: 25px;
-    margin-bottom: 10px;
     text-decoration: none;
     color: #fff;
   }
@@ -158,6 +157,7 @@ export default {
     display: flex;
     text-decoration: none;
     color: #fff;
+    margin-top: 10px;
 
     svg {
       margin-right: 10px;
