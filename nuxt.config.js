@@ -20,8 +20,7 @@ export default {
   },
 
   server: {
-    host: env.host,
-    port: env.port
+    host: env.host
   },
 
   toast: {
