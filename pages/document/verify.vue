@@ -21,7 +21,7 @@
                 />
               </svg>
               <div>
-                Какие 5 букв отсутствуют в фамилии, имени, отчестве Автора?
+                Какие 5 букв отсутствуют в фамилии, имени Автора?
               </div>
             </div>
             <div class="main-content__form__list__input">
@@ -54,7 +54,7 @@
               </svg>
 
               <div>
-                Какие 5 букв отсутствуют в фамилии, имени, отчестве Адресата?
+                Какие 5 букв отсутствуют в фамилии, имени Адресата?
               </div>
             </div>
             <div class="main-content__form__list__input">
@@ -107,12 +107,13 @@ export default {
   },
   methods: {
     onChange({ key, value, valide }) {
-      this.form[key] = value;
+      this.form[key] = value.toUpperCase();
       this.validate[key] = valide;
     },
     async action() {
       if (this.loading) {
         this.$toast.warning("Идет загрузка");
+        return
       }
 
       this.loading = true;

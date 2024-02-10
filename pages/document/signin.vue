@@ -72,6 +72,7 @@ export default {
 
       if (this.loading) {
         this.$toast.warning('Идет загрузка')
+        return
       }
 
       this.loading = true

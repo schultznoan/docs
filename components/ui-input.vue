@@ -36,11 +36,9 @@
 
 <script>
 function validateLink(link) {
-  if (link?.length < 10) {
-    return "Некорректная ссылка";
-  }
+  const validateUrl = window.location.origin + '/link'
 
-  if (!(link?.startsWith("http://") || link?.startsWith("https://"))) {
+  if (!link?.startsWith(validateUrl)) {
     return "Некорректная ссылка";
   }
 
@@ -177,7 +175,7 @@ export default {
     padding: 10px 15px;
     border-radius: 10px;
     border: 1px solid #0184ff7e;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     width: -webkit-fill-available;
     resize: none;

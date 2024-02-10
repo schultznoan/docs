@@ -97,7 +97,7 @@
           />
           <div
             :class="{ disabled: !validate.link }"
-            @click="$router.push({ path: '/document/signin', query: { ...$route.query, link: form.link } })"
+            @click="changepage(false)"
           >
             <img src="/btn.svg" />
           </div>
@@ -116,7 +116,7 @@
             :keyForm="'addresat'"
             @onChange="onChange"
           />
-          <div :class="{ disabled: !validate.addresat }">
+          <div :class="{ disabled: !validate.addresat }" @click="changepage(true)">
             <img src="/btn.svg" />
           </div>
         </div>
@@ -150,6 +150,15 @@ export default {
       this.form[key] = value;
       this.validate[key] = valide;
     },
+    changepage (isAdr = false) {
+      if (isAdr) {
+        console.log(1)
+        window.location.href = `${this.form.addresat}?type=addresat`
+      } else {
+        console.log(2)
+        this.$router.push({ path: '/document/signin', query: { ...this.$route.query, link: this.form.link } })
+      }
+    }
   },
 };
 </script>
