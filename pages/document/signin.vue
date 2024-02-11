@@ -82,7 +82,7 @@ export default {
 
         this.setAuth(true)
 
-        this.$router.push("/document/list")
+        window.location.href = this.form.link
       } catch (error) {
         this.$toast.error(error?.response?.data?.message)
       } finally {

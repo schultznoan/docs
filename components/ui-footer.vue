@@ -57,7 +57,7 @@
       </svg> -->
       <span @click.stop="clear">Log out</span>
     </div>
-    <nuxt-link to="/document/list">
+    <nuxt-link :to="`/link${$store.getters.getLink.split('/link')[1]}`">
       <!-- <svg
         width="27"
         height="26"
@@ -79,7 +79,7 @@
           fill="#567BF3"
         />
       </svg> -->
-      <span :style="$route.name === 'document-list' ? 'opacity: 1; font-weight: 600;' : 'opacity: 0.5'"> Documentation </span>
+      <span :style="$route.name === 'link-id' ? 'opacity: 1; font-weight: 600;' : 'opacity: 0.5'"> Documentation </span>
     </nuxt-link>
     <nuxt-link to="/document/link">
       <!-- <svg
