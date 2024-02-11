@@ -51,6 +51,10 @@ module.exports = new class DocumentController {
     try {
       const document = await DocumentService.get(req.user)
 
+      if (!document) {
+        res.clearCookie('inforphere_access_token')
+      }
+
       res.json(document)
     } catch (error) {
       next(error)
