@@ -403,6 +403,10 @@ export default {
   async mounted() {
     try {
       this.document = (await this.$axios.get("/document")).data;
+
+      if (!this.document) {
+        this.$router.push('/')
+      }
     } catch (error) {
       console.error(error);
     }
