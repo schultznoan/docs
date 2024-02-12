@@ -111,6 +111,15 @@
             </svg>
           </div>
         </div>
+        <div>
+          <a :href="`mailto:?subject=Inforsphere - ссылка на документ&body=${encodeURIComponent(`Заходите на сайт и используйте этот линк для редактирования автором или получения доступа адресатом\n\n${this.document.link}?type=addresat`)}\n`">
+            <ui-button
+              :title="'ПОДЕЛИТЬСЯ С АДРЕСАТОМ'"
+              :disabled="true"
+              @action="action"
+            />
+          </a>
+        </div>
       </div>
       <div v-if="modal" class="modal">
         <div class="modal-overlay">
