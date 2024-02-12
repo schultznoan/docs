@@ -416,6 +416,12 @@ export default {
       if (!this.document) {
         this.$router.push('/')
       }
+
+      if (this.document.link !== window.location.href) {
+        await this.$axios.post('/document/clear')
+
+        window.location.reload()
+      }
     } catch (error) {
       console.error(error);
     }
