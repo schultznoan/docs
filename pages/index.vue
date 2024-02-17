@@ -151,10 +151,8 @@ export default {
     },
     changepage (isAdr = false) {
       if (isAdr) {
-        console.log(1)
         window.location.href = `${this.form.addresat}?type=addresat`
       } else {
-        console.log(2)
         this.$router.push({ path: '/document/signin', query: { ...this.$route.query, link: this.form.link } })
       }
     }
