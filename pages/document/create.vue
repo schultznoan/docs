@@ -58,6 +58,13 @@
           </label>
         </div>
       </div>
+      <div class="how">
+        <div class="how-desc">
+          <div>
+            Если у вас нет готового документа, то загрузите любой документ, который вы сможете заменить позже в любой момент. Так мы сможем создать ссылку уже сейчас.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -77,9 +84,13 @@ export default {
       formData.append("pdf_file", file);
 
       try {
-        const { link } = (await this.$axios.post("/document/create", formData)).data;
+        const { link } = (await this.$axios.post("/document/create", formData))
+          .data;
 
-        this.$router.push({ path: '/document/signup', query: { ...this.$route.query, link } })
+        this.$router.push({
+          path: "/document/signup",
+          query: { ...this.$route.query, link },
+        });
       } catch (error) {
         console.log(error);
       }
@@ -140,6 +151,38 @@ export default {
       display: block;
       margin-top: 8px;
     }
+  }
+}
+
+.how {
+  margin-top: 20px;
+  background-color: #f8fbff;
+  padding: 20px;
+  border-radius: 15px;
+
+  &-title {
+    color: #567bf3;
+    line-height: 23px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  &-desc {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+
+    &__icon {
+      margin-right: 10px;
+      widows: 20px;
+      height: 20px;
+    }
+
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 500;
   }
 }
 </style>
