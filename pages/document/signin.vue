@@ -12,19 +12,9 @@
           :keyForm="'password'"
           @onChange="onChange"
         />
-        <div class="main-content__head" style="margin-top: 10px">
-          Повторите пароль
-        </div>
-        <ui-input
-          type="password"
-          placeholder="Введите пароль"
-          :value="form.verifyPassword"
-          :keyForm="'verifyPassword'"
-          @onChange="onChange"
-        />
         <ui-button
           :title="'SAVE'"
-          :disabled="(validate.password && validate.verifyPassword) || loading"
+          :disabled="(validate.password) || loading"
           @action="action"
         />
       </div>
@@ -47,11 +37,9 @@ export default {
       form: {
         link: this.$route.query.link,
         password: "",
-        verifyPassword: "",
       },
       validate: {
         password: false,
-        verifyPassword: false,
       },
       loading: false
     };
@@ -65,11 +53,6 @@ export default {
       this.validate[key] = valide;
     },
     async action () {
-      if (this.form.password !== this.form.verifyPassword) {
-        this.$toast.error('Пароли не совпадают')
-        return
-      }
-
       if (this.loading) {
         this.$toast.warning('Идет загрузка')
         return

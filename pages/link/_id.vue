@@ -112,13 +112,25 @@
           </div>
         </div>
         <div>
-          <a :href="`mailto:?subject=Inforsphere - ссылка на документ&body=${encodeURIComponent(`Заходите на сайт и используйте этот линк для редактирования автором или получения доступа адресатом\n\n${this.document.link}?type=addresat`)}\n`">
+          <a
+            :href="`mailto:?subject=Inforsphere - ссылка на документ&body=${encodeURIComponent(
+              `Заходите на сайт и используйте этот линк для редактирования автором или получения доступа адресатом\n\n${this.document.link}?type=addresat`
+            )}\n`"
+          >
             <ui-button
               :title="'ПОДЕЛИТЬСЯ С АДРЕСАТОМ'"
-              :disabled="true"
+              :disabled="document.activate"
               @action="action"
             />
           </a>
+          <div v-if="!document.activate" class="how">
+            <div class="how-desc">
+              <div>
+                Чтобы поделиться документом с адресатом активируйте ссылку
+                ссылку, нажав но кнопку Link внизу экрана
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div v-if="modal" class="modal">
@@ -354,20 +366,36 @@
       <ui-footer />
     </main>
     <main v-if="$route.query?.type === 'addresat'">
-      <div class="container">здесь будет инструкция</div>
+      <div class="flexcont">
+        <div class="container">
+          <div class="main-header-custom" @click="$router.push('/')">
+            INPFORSPHERE.COM
+          </div>
+          <div class="how">
+            <div class="how-desc">
+              <div>
+                Используйте ссылку в форме ниже или при общении с поддержкой
+              </div>
+            </div>
+          </div>
+        </div>
+        <feedback :addresatPage="true" />
+      </div>
     </main>
   </div>
 </template>
 
 <script>
 import UiFooter from "@/components/ui-footer.vue";
+import Feedback from "@/components/feedback.vue";
 export default {
-  components: { UiFooter },
+  components: { UiFooter, Feedback },
   data() {
     return {
       document: null,
       modal: false,
       isMobile: false,
+      link: "",
     };
   },
   created() {
@@ -375,7 +403,7 @@ export default {
       const isAdr = this.$route.query?.type;
 
       if (isAdr !== "addresat" && !this.$store.getters.getAuth) {
-       this.$router.push({
+        this.$router.push({
           path: "/document/signin",
           query: { ...this.$route.query, link: window.location.href },
         });
@@ -414,13 +442,13 @@ export default {
       this.document = (await this.$axios.get("/document")).data;
 
       if (!this.document) {
-        this.$router.push('/')
+        this.$router.push("/");
       }
 
       if (this.document.link !== window.location.href) {
-        await this.$axios.post('/document/clear')
+        await this.$axios.post("/document/clear");
 
-        window.location.reload()
+        window.location.reload();
       }
     } catch (error) {
       console.error(error);
@@ -471,6 +499,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main-header-custom {
+  color: #567bf3;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.flexcont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  box-sizing: border-box;
+
+  .feedback {
+    width: 100%;
+  }
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -634,5 +681,37 @@ export default {
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.how {
+  margin-top: 20px;
+  background-color: #f8fbff;
+  padding: 20px;
+  border-radius: 15px;
+
+  &-title {
+    color: #567bf3;
+    line-height: 23px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  &-desc {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+
+    &__icon {
+      margin-right: 10px;
+      widows: 20px;
+      height: 20px;
+    }
+
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 500;
+  }
 }
 </style>

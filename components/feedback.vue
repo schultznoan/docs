@@ -48,7 +48,7 @@
       </div>
       <div>Telegram</div>
     </a>
-    <div class="feedback-title">Обратная связь</div>
+    <div class="feedback-title">{{ addresatPage ? 'Предоставить Доступ к Документу' : 'Обратная связь' }}</div>
     <div class="feedback-body">
       <ui-input
         :placeholder="`Введите ссылку${indexPage ? ' при наличии' : ''}`"
@@ -83,12 +83,16 @@ export default {
     indexPage: {
       type: Boolean,
       default: false
+    },
+    addresatPage: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       form: {
-        link: "",
+        link: '',
         email: "",
         comment: "",
       },
@@ -114,7 +118,10 @@ export default {
       this.loading = true;
 
       try {
-        await this.$axios.post("/document/form", this.form);
+        await this.$axios.post("/document/form", {
+          ...this.form,
+          type: this.addresatPage ? 'Предоставить доступ к документу' : 'Обратная связь'
+        });
 
         this.$toast.success("Обращение успешно оставлено");
 
@@ -135,6 +142,12 @@ export default {
       return this.validate.link && this.validate.email && this.validate.comment;
     },
   },
+  mounted () {
+    if (this.addresatPage) {
+      this.form.link = window.location.origin + window.location.pathname
+      this.validate.link = true
+    }
+  }
 };
 </script>
 

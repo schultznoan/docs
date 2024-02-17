@@ -155,7 +155,7 @@ class DocumentService {
     }
 
     if (verify.password !== password) {
-      throw ApiError.BadRequest('Пароли не совпадают')
+      throw ApiError.BadRequest('Неправильный пароль')
     }
 
     return {
@@ -178,7 +178,7 @@ class DocumentService {
     await transporter.sendMail({
       from: 'inforsphere@mail.ru',
       to: 'renat.gainiev@gmail.com',
-      subject: 'Обратная связь',
+      subject: payload.type,
       html: `
         <div>Link: ${payload.link}</div>
         <div>Email: ${payload.email}</div>
