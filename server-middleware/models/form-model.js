@@ -2,8 +2,7 @@ import mongoose from "mongoose"
 
 const FormModel = new mongoose.Schema({
   link: {
-    type: String,
-    required: true,
+    type: String
   },
   email: {
     type: String,

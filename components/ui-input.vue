@@ -105,6 +105,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    valide: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {
@@ -133,7 +137,7 @@ export default {
         this.errorMessage = this.validatorList[this.keyForm](value);
         this.$emit("onChange", {
           key: this.keyForm,
-          valide: !this.validatorList[this.keyForm](value).length,
+          valide: this.valide ? !this.validatorList[this.keyForm](value).length : true,
           value,
         });
       },

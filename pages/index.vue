@@ -3,8 +3,7 @@
     <div class="container">
       <header class="main-head">INFORSPHERE.COM</header>
       <div class="main-info">
-        Добро пожаловать на платформу, где вы можете безопасно обмениваться
-        документами, сохраняя конфиденциальность
+        Добро пожаловать на платформу, где вы можете безопасно сохранить документы для вашего адресата, сохраняя конфиденциальность
       </div>
       <div class="main-role">Выберите свою роль, чтобы начать</div>
       <svg
@@ -122,7 +121,7 @@
         </div>
       </div>
     </div>
-    <feedback />
+    <feedback :index-page="true" />
   </main>
 </template>
 

@@ -51,7 +51,8 @@
     <div class="feedback-title">Обратная связь</div>
     <div class="feedback-body">
       <ui-input
-        placeholder="Введите ссылку"
+        :placeholder="`Введите ссылку${indexPage ? ' при наличии' : ''}`"
+        :valide="false"
         :value="form.link"
         :keyForm="'link'"
         @onChange="onChange"
@@ -78,6 +79,12 @@
 
 <script>
 export default {
+  props: {
+    indexPage: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       form: {
@@ -86,7 +93,7 @@ export default {
         comment: "",
       },
       validate: {
-        link: false,
+        link: this.indexPage ? true : false,
         email: false,
         comment: false,
       },
