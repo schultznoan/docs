@@ -514,6 +514,12 @@ export default {
       margin-bottom: 5px;
     }
 
+    &__icon {
+      margin-right: 10px;
+      widows: 20px;
+      height: 20px;
+    }
+
     line-height: 18px;
     font-size: 14px;
     font-weight: 500;
