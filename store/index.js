@@ -41,7 +41,7 @@ export const actions = {
         }
         console.log(req.url)
         try {
-            const count = await $axios.get('http://192.168.1.6:3000/api/document/count')
+            const count = await $axios.get('https://inforsphere.com/api/document/count')
 
             state.count = +(count?.data || 0)
         } catch (err) {
