@@ -89,7 +89,7 @@
       </div>
       <div v-if="!document.activate" class="how">
         <div class="how-title">Как активировать ссылку?</div>
-        <div class="how-desc">
+        <div class="how-desc flex">
           <div class="how-desc__icon">
             <svg
               width="20"
@@ -109,7 +109,7 @@
             Нажмите на кнопку «Оплатить» и внесите сумму согласно тарифу
           </div>
         </div>
-        <div class="how-desc">
+        <div class="how-desc flex">
           <div class="how-desc__icon">
             <svg
               width="20"
@@ -169,7 +169,7 @@
             <div class="tarif-action dop" @click="submit('month')">Выбрать</div>
           </div>
         </div>
-        <div class="how-desc">
+        <div class="how-desc flex">
           <div class="how-desc__icon">
             <svg
               width="16"
@@ -221,7 +221,7 @@
           </div>
           <div>Неограниченный доступ Адресата к вашим документам</div>
         </div>
-        <div class="how-desc">
+        <div class="how-desc flex">
           <div class="how-desc__icon">
             <svg
               width="16"
@@ -508,6 +508,11 @@ export default {
 
   &-desc {
     margin-top: 10px;
+
+    .flex {
+      display: flex;
+      align-items: center;
+    }
 
     &__head {
       font-weight: 600;
