@@ -509,7 +509,7 @@ export default {
   &-desc {
     margin-top: 10px;
 
-    .flex-desc {
+    &.flex-desc {
       display: flex;
       align-items: center;
     }
