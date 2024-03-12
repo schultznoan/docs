@@ -116,11 +116,11 @@
             :href="`mailto:?subject=Inforsphere - ссылка на документ&body=${encodeURIComponent(
               `Заходите на сайт и используйте этот линк для редактирования автором или получения доступа адресатом\n\n${this.document.link}?type=addresat`
             )}\n`"
+            :class="{ disabled: !document.activate }"
           >
             <ui-button
               :title="'ПОДЕЛИТЬСЯ С АДРЕСАТОМ'"
               :disabled="document.activate"
-              @action="action"
             />
           </a>
           <div v-if="!document.activate" class="how">

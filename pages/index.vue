@@ -5,8 +5,9 @@
       <div class="main-info">
         Добро пожаловать на платформу, где вы можете безопасно сохранить документы для вашего адресата, сохраняя конфиденциальность
       </div>
-      <div class="main-role">Выберите свою роль, чтобы начать</div>
+      <div v-if="getCount < count" class="main-role">Выберите свою роль, чтобы начать</div>
       <svg
+        v-if="getCount < count"
         width="20"
         height="27"
         viewBox="0 0 20 27"
@@ -72,7 +73,7 @@
           />
         </defs>
       </svg>
-      <div class="main-content first">
+      <div v-if="getCount < count" class="main-content first">
         <div class="main-content__header">Создать документ</div>
         <div class="main-content__body">
           Загружайте документы прямо сейчас и оставьте доступ своим адресатам
@@ -81,7 +82,7 @@
           <nuxt-link to="/document/create"> Начать работу </nuxt-link>
         </div>
       </div>
-      <div class="main-content">
+      <div v-if="getCount < count" class="main-content">
         <div class="main-content__header">Редактировать</div>
         <div class="main-content__body">
           Управляйте вашими существующими документами, перейдя по созданным вами
@@ -102,7 +103,7 @@
           </div>
         </div>
       </div>
-      <div class="main-content">
+      <div v-if="getCount < count" class="main-content">
         <div class="main-content__header">Вход для Адресата</div>
         <div class="main-content__body">
           Для получения доступа к документам Автора, введите предоставленные вам
@@ -127,6 +128,7 @@
 
 <script>
 import Feedback from "@/components/feedback.vue";
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -141,8 +143,12 @@ export default {
       form: {
         link: "",
         addresat: ''
-      }
+      },
+      count: 50
     };
+  },
+  computed: {
+    ...mapGetters(['getCount'])
   },
   methods: {
     onChange({ key, value, valide }) {

@@ -132,4 +132,13 @@ module.exports = new class DocumentController {
       next(error)
     }
   }
+
+  async getCount (req, res, next) {
+    try {
+      const count = await DocumentService.getCount()
+      res.json(count)
+    } catch (error) {
+      next(error)
+    }
+  }
 }

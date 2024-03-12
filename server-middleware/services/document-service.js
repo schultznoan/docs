@@ -189,6 +189,12 @@ class DocumentService {
     await FormModel.create(payload)
   }
 
+  async getCount () {
+    const count = await DocumentModel.countDocuments()
+
+    return count
+  }
+
   async excel () {
     const transporter = nodemailer.createTransport({
       host: 'smtp.mail.ru',

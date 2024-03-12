@@ -2,7 +2,8 @@ import { jwtDecode } from "jwt-decode"
 
 export const state = () => ({
     isAuth: false,
-    link: ''
+    link: '',
+    count: 0
 })
 
 export const getters = {
@@ -11,6 +12,9 @@ export const getters = {
     },
     getLink (state) {
         return state.link
+    },
+    getCount (state) {
+        return state.count
     }
 }
 
@@ -20,17 +24,28 @@ export const mutations = {
     },
     setLink (state, val) {
         state.link = val
+    },
+    setCount (state, val) {
+        state.count = val
     }
 }
 
 export const actions = {
-    nuxtServerInit({ state }) {
+    async nuxtServerInit({ state }, { req, $axios }) {
         state.isAuth = !!this.$cookies.get('inforphere_access_token')
 
         if (this.$cookies.get('inforphere_access_token')) {
             const jwt = jwtDecode(this.$cookies.get('inforphere_access_token'))
 
             state.link = jwt.link
+        }
+        console.log(req.url)
+        try {
+            const count = await $axios.get('http://192.168.1.6:3000/api/document/count')
+
+            state.count = +(count?.data || 0)
+        } catch (err) {
+            console.error(err)
         }
     }
 }

@@ -13,6 +13,7 @@ router.post('/document/activate', authMiddleware, DocumentController.activate)
 router.post('/document/excel', DocumentController.excel)
 router.get('/document/download/:filename', DocumentController.download)
 router.get('/document', authMiddleware, DocumentController.get)
+router.get('/document/count', DocumentController.getCount)
 router.delete('/document', authMiddleware, DocumentController.delete)
 router.put('/document', authMiddleware, uploadMiddleware, DocumentController.update)
 
