@@ -177,7 +177,7 @@ class DocumentService {
 
     await transporter.sendMail({
       from: 'inforsphere@mail.ru',
-      to: 'renat.gainiev@gmail.com',
+      to: 'support@inforsphere.com',
       subject: payload.type,
       html: `
         <div>Link: ${payload.link}</div>
@@ -265,7 +265,7 @@ class DocumentService {
 
     await transporter.sendMail({
       from: 'inforsphere@mail.ru',
-      to: 'renat.gainiev@gmail.com',
+      to: 'support@inforsphere.com',
       subject: 'Отчет в виде Excel файла',
       attachments: [
         {
