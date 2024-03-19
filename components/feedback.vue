@@ -1,6 +1,6 @@
 <template>
   <div class="feedback">
-    <a href="mailto:support@inforsphere.com" class="feedback-mail">support@inforsphere.com</a>
+    <a href="mailto:renat.gainiev@gmail.com" class="feedback-mail">renat.gainiev@gmail.com</a>
     <a href="https://t.me/GlobalRenat" class="feedback-telegram">
       <div>
         <svg
